@@ -5,7 +5,7 @@ GymPass style app.
 ## RFs (Requisitos funcionais) 
 > obs: é uma declaração de como um sistema deve se comportar
 
-- [ ] Deve ser possível se cadastrar;
+- [x] Deve ser possível se cadastrar;
 - [ ] Deve ser possível se autenticar;
 - [ ] Deve ser possível obter o perfil de um usuário logado;
 - [ ] Deve ser possível o usuário obter o número de check-ins realizados pelo usuário logado;
@@ -19,7 +19,7 @@ GymPass style app.
 ## RNs (Regras de negócio)
 > obs: descreve um aspecto do negócio, definindo ou restringindo tanto sua estrutura quanto seu comportamento
 
-- [ ] O usuário não deve poder se cadastrar com e-mail duplicado;
+- [x] O usuário não deve poder se cadastrar com e-mail duplicado;
 - [ ] O usuário não opde fazer 2 check-ins no mesmo dia;
 - [ ] O usuário não pode fazer check-in se não estiver perto (100m) da academia;
 - [ ] O check-in só pode ser validado até 20 minutos após criado;
@@ -30,7 +30,7 @@ GymPass style app.
 ## RNFs (requisitos não-funcionais)
 > obs:  são os requisitos relacionados ao uso da aplicação em termos de desempenho, usabilidade, confiabilidade, segurança, disponibilidade, manutenção e tecnologias envolvidas. Estes requisitos dizem respeito a como as funcionalidades serão entregues ao usuário do software
 
-- [ ] A senha do usuário precisa estar criptografada;
-- [ ] Os dados da aplicação precisa estar persistidos em um banco PostgreSQL;
+- [x] A senha do usuário precisa estar criptografada;
+- [x] Os dados da aplicação precisa estar persistidos em um banco PostgreSQL;
 - [ ] Todas listas de dados precisam estar paginadas com 20 itens por páginas;
 - [ ] O usúario deve ser identificado por JWT (JSON Web Token)
