@@ -1,9 +1,8 @@
 import { describe, it, expect, beforeEach } from "vitest";
 import { hash } from "bcryptjs";
 import { InMemoryUsersRepository } from "@/repositories/in-memory/in-memory-users-repository";
-import { AuthenticateUseCase } from "./authenticate";
-import { InvalidCredentialsError } from "./errors/invalid-credentials-error";
 import { GetUserProfileUseCase } from "./get-user-profile";
+import { ResourceNotFoundError } from "./errors/resource-not-found-error";
 
 let usersRepository: InMemoryUsersRepository
 let sut: GetUserProfileUseCase
@@ -25,30 +24,15 @@ describe("Get User Profile Use Case", () => {
 
     });
 
-    expect(user.id).toEqual(expect.any(String));
+    expect(user.name).toEqual('John Doe');
   });
-  it('should not be able to authenticate with wrong email', async () => {
+
+  it("should not be able to get user profile with wrong id", async () => {
 
     expect(() => 
       sut.execute({
-        email: 'johndoe@example.com',
-        password: '123456'
-      }),
-    ).rejects.toBeInstanceOf(InvalidCredentialsError)
-  })
-  it('should not be able to authenticate with password', async () => {
-
-    await usersRepository.create({
-      name: "John Doe",
-      email: "johndoe@example.com",
-      password_hash: await hash("123456", 6),
-    });
-
-    expect(() => 
-      sut.execute({
-        email: 'johndoe@example.com',
-        password: 'wrong'
-      }),
-    ).rejects.toBeInstanceOf(InvalidCredentialsError)
+        userId:  'non-existing-id'
+      })
+    ).rejects.toBeInstanceOf(ResourceNotFoundError)
   })
 });
