@@ -8,6 +8,7 @@ generator client {
   provider = "prisma-client-js"
 }
 
+// connect database url dotenv
 datasource db {
   provider = "postgresql"
   url      = env("DATABASE_URL")

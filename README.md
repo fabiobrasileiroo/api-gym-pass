@@ -20,12 +20,11 @@ GymPass style app.
 > obs: descreve um aspecto do negócio, definindo ou restringindo tanto sua estrutura quanto seu comportamento
 
 - [x] O usuário não deve poder se cadastrar com e-mail duplicado;
-- [ ] O usuário não opde fazer 2 check-ins no mesmo dia;
-- [ ] O usuário não pode fazer check-in se não estiver perto (100m) da academia;
+- [x] O usuário não pode fazer 2 check-ins no mesmo dia;
+- [x] O usuário não pode fazer check-in se não estiver perto (100m) da academia;
 - [ ] O check-in só pode ser validado até 20 minutos após criado;
 - [ ] O check-in só pode ser validado por administradores;
 - [ ] A academia só pode ser cadastrada por administradores;
-- [ ]
 
 ## RNFs (requisitos não-funcionais)
 > obs:  são os requisitos relacionados ao uso da aplicação em termos de desempenho, usabilidade, confiabilidade, segurança, disponibilidade, manutenção e tecnologias envolvidas. Estes requisitos dizem respeito a como as funcionalidades serão entregues ao usuário do software

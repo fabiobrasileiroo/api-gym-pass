@@ -34,6 +34,4 @@ export class InMemoryUsersRepository implements UsersRepository {
 
     return user
   }
-
-
 }
