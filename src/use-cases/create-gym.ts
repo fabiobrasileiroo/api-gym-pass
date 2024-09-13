@@ -1,19 +1,19 @@
-import { prisma } from "@/lib/prisma";
-import { hash } from "bcryptjs";
-import { UserAlreadyExistsError } from "./errors/user-already-exists";
-import { Gym, User } from "@prisma/client";
-import { GymsRepository } from "@/repositories/gyms-repository";
+import { prisma } from '@/lib/prisma'
+import type { GymsRepository } from '@/repositories/gyms-repository'
+import { type Gym, User } from '@prisma/client'
+import { hash } from 'bcryptjs'
+import { UserAlreadyExistsError } from './errors/user-already-exists'
 
 interface CreateGymUseCaseRequest {
-  title: string;
-  description: string | null; 
-  phone: string | null;
+  title: string
+  description: string | null
+  phone: string | null
   latitude: number
-  longitude:number
+  longitude: number
 }
 
 interface CreateGymUseResponse {
-  gym: Gym;
+  gym: Gym
 }
 
 export class CreateGymUseCase {
@@ -27,14 +27,14 @@ export class CreateGymUseCase {
     longitude,
   }: CreateGymUseCaseRequest): Promise<CreateGymUseResponse> {
     const gym = await this.gymsRepository.create({
-    title,
-    description,
-    phone,
-    latitude,
-    longitude,
+      title,
+      description,
+      phone,
+      latitude,
+      longitude,
     })
     return {
       gym,
-    };
+    }
   }
 }

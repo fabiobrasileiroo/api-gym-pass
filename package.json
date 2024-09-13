@@ -14,18 +14,15 @@
     "test:watch": "vitest",
     "test:coverage": "vitest run --coverage",
     "test:ui": "vitest --ui",
-    "lint": "eslint --fix src/*.ts"
+    "lint:format": "npx @biomejs/biome format --write ./",
+    "lint": "npx @biomejs/biome lint --write ./",
+    "lint:check": "npx @biomejs/biome check --write ./"
   },
-  "keywords": [
-    "api",
-    "GymPass",
-    "solid"
-  ],
+  "keywords": ["api", "GymPass", "solid"],
   "author": "Fábio Brasileiro",
   "license": "MIT",
   "devDependencies": {
-    "@eslint/js": "9.9.0",
-    "@rocketseat/eslint-config": "2.2.2",
+    "@biomejs/biome": "1.9.0",
     "@types/bcryptjs": "2.4.6",
     "@types/node": "22.4.0",
     "@vitest/coverage-v8": "2.0.5",
@@ -36,12 +33,11 @@
     "tsup": "8.2.4",
     "tsx": "4.17.0",
     "typescript": "5.5.4",
-    "typescript-eslint": "8.1.0",
     "vite-tsconfig-paths": "5.0.1",
     "vitest": "2.0.5"
   },
   "dependencies": {
-    "@prisma/client": "5.18.0",
+    "@prisma/client": "5.19.1",
     "bcryptjs": "2.4.3",
     "dayjs": "1.11.13",
     "dotenv": "16.4.5",

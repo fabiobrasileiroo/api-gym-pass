@@ -1,20 +1,20 @@
-import { Gym, Prisma} from "@prisma/client";
-import { GymsRepository } from "../gyms-repository";
-import { randomUUID } from "node:crypto";
+import { randomUUID } from 'node:crypto'
+import { type Gym, Prisma } from '@prisma/client'
+import type { GymsRepository } from '../gyms-repository'
 
 export class InMemoryGymsRepository implements GymsRepository {
   public items: Gym[] = []
 
   async findById(id: string) {
-    const gym = this.items.find((item) => item.id === id)
-    
-    if(!gym) {
+    const gym = this.items.find(item => item.id === id)
+
+    if (!gym) {
       return null
     }
 
     return gym
   }
-   async create(data: Prisma.GymCreateInput) {
+  async create(data: Prisma.GymCreateInput) {
     const gym = {
       id: data.id ?? randomUUID(),
       title: data.title,
