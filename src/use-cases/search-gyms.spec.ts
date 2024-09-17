@@ -5,7 +5,7 @@ import { InMemoryGymsRepository } from '@/repositories/in-memory/in-memory-gyms-
 import { SearchGymsUseCase } from './search-gyms'
 
 let gymsRepository: InMemoryGymsRepository
-let sut: SearchGymsUseCase 
+let sut: SearchGymsUseCase
 
 describe('Search Gyms Use Case', () => {
   beforeEach(async () => {
@@ -36,18 +36,16 @@ describe('Search Gyms Use Case', () => {
     })
 
     expect(gyms).toHaveLength(1)
-    expect(gyms).toEqual([
-      expect.objectContaining({ title: 'JavaScript Gym' }),
-    ])
+    expect(gyms).toEqual([expect.objectContaining({ title: 'JavaScript Gym' })])
   })
   it('should be able to fetch paginated gyms search', async () => {
     for (let i = 1; i <= 22; i++) {
       await gymsRepository.create({
-              title: `JavaScript Gym ${i}`,
-      description: null,
-      phone: null,
-      latitude: -3.0507008,
-      longitude: -60.0211456,
+        title: `JavaScript Gym ${i}`,
+        description: null,
+        phone: null,
+        latitude: -3.0507008,
+        longitude: -60.0211456,
       })
     }
 

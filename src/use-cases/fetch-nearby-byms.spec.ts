@@ -4,7 +4,7 @@ import { SearchGymsUseCase } from './search-gyms'
 import { FetchNearbyGymsUseCase } from './fetch-nearby-gyms'
 
 let gymsRepository: InMemoryGymsRepository
-let sut: FetchNearbyGymsUseCase 
+let sut: FetchNearbyGymsUseCase
 
 describe('Search Gyms Use Case', () => {
   beforeEach(async () => {
@@ -35,8 +35,6 @@ describe('Search Gyms Use Case', () => {
     })
 
     expect(gyms).toHaveLength(1)
-    expect(gyms).toEqual([
-      expect.objectContaining({ title: 'Near Gym' }),
-    ])
+    expect(gyms).toEqual([expect.objectContaining({ title: 'Near Gym' })])
   })
 })
