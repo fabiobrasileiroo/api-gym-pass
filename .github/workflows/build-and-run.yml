@@ -32,4 +32,4 @@ jobs:
         run: |
           npm run start &
           sleep 10 # Espera alguns segundos para dar tempo da aplicação iniciar
-          curl --fail http://localhost:3000 || exit 1
+          curl --fail http://localhost:3333 || exit 1
