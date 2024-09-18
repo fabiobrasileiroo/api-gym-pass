@@ -7,6 +7,7 @@ on:
     types:
       - opened
       - synchronize
+      - ready_for_review
 
 jobs:
   automerge:
@@ -24,14 +25,14 @@ jobs:
       - name: Install dependencies
         run: npm install
 
-      - name: Verify status checks
-        run: |
-          pr_author=$(jq -r .pull_request.user.login $GITHUB_EVENT_PATH)
-          if [[ "$pr_author" == "renovate[bot]" ]]; then
-            echo "Renovate PR detected. Proceeding with automerge."
-            gh pr merge ${{ github.event.pull_request.number }} --squash --auto
-          else
-            echo "Not a Renovate PR, skipping automerge."
-          fi
+      - name: Approve PR
+        if: ${{ github.event.pull_request.user.login == 'renovate[bot]' }}
+        run: gh pr review ${{ github.event.pull_request.number }} --approve
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Merge PR
+        if: ${{ github.event.pull_request.user.login == 'renovate[bot]' }}
+        run: gh pr merge ${{ github.event.pull_request.number }} --squash --auto
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
