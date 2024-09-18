@@ -1,0 +1,37 @@
+name: Auto Merge Renovate PRs
+
+on:
+  pull_request:
+    branches:
+      - renovate/**
+    types:
+      - opened
+      - synchronize
+
+jobs:
+  automerge:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '22'
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Verify status checks
+        run: |
+          pr_author=$(jq -r .pull_request.user.login $GITHUB_EVENT_PATH)
+          if [[ "$pr_author" == "renovate[bot]" ]]; then
+            echo "Renovate PR detected. Proceeding with automerge."
+            gh pr merge ${{ github.event.pull_request.number }} --squash --auto
+          else
+            echo "Not a Renovate PR, skipping automerge."
+          fi
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
