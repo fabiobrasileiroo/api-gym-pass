@@ -8,6 +8,8 @@ import { InvalidCredentialsError } from './errors/invalid-credentials-error'
 import { ResourceNotFoundError } from './errors/resource-not-found-error'
 import { MaxNumberOfCheckInsError } from './errors/max-number-of-check-ins-error'
 import { MaxDistanceError } from './errors/max-distance-error'
+import dayjs from 'dayjs'
+import { LateCheckInValidationError } from './errors/late-check-in-validation-error'
 
 interface ValidateCheckInUseCaseRequest {
   checkInId: string
@@ -28,6 +30,13 @@ export class ValidateCheckInUseCase {
       throw new ResourceNotFoundError()
     }
 
+    const distanceInMinutesFromCheckInCreation = dayjs(new Date()).diff(
+      checkIn.created_at,
+      'minutes'
+    )
+    if(distanceInMinutesFromCheckInCreation > 20) {
+      throw new LateCheckInValidationError()
+    }
     checkIn.validated_at = new Date()
 
     await this.checkInsRepository.save(checkIn)
