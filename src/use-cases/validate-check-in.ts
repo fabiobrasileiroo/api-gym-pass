@@ -4,12 +4,12 @@ import { UsersRepository } from '@/repositories/users-repository'
 import { getDistanceBetweenCoordinates } from '@/utils/get-distance-between-coordinates'
 import type { CheckIn } from '@prisma/client'
 import { compare } from 'bcryptjs'
-import { InvalidCredentialsError } from './errors/invalid-credentials-error'
-import { ResourceNotFoundError } from './errors/resource-not-found-error'
-import { MaxNumberOfCheckInsError } from './errors/max-number-of-check-ins-error'
-import { MaxDistanceError } from './errors/max-distance-error'
 import dayjs from 'dayjs'
+import { InvalidCredentialsError } from './errors/invalid-credentials-error'
 import { LateCheckInValidationError } from './errors/late-check-in-validation-error'
+import { MaxDistanceError } from './errors/max-distance-error'
+import { MaxNumberOfCheckInsError } from './errors/max-number-of-check-ins-error'
+import { ResourceNotFoundError } from './errors/resource-not-found-error'
 
 interface ValidateCheckInUseCaseRequest {
   checkInId: string
@@ -34,7 +34,7 @@ export class ValidateCheckInUseCase {
       checkIn.created_at,
       'minutes'
     )
-    if(distanceInMinutesFromCheckInCreation > 20) {
+    if (distanceInMinutesFromCheckInCreation > 20) {
       throw new LateCheckInValidationError()
     }
     checkIn.validated_at = new Date()
