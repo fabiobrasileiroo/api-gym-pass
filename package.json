@@ -1,5 +1,5 @@
 {
-  "name": "03-api-solid",
+  "name": "api-gym-pass",
   "version": "1.0.0",
   "description": "GymPass style app.",
   "main": "index.js",
@@ -18,7 +18,11 @@
     "lint": "npx @biomejs/biome lint --write ./",
     "lint:check": "npx @biomejs/biome check --write ./"
   },
-  "keywords": ["api", "GymPass", "solid"],
+  "keywords": [
+    "api",
+    "GymPass",
+    "solid"
+  ],
   "author": "Fábio Brasileiro",
   "license": "MIT",
   "devDependencies": {
@@ -36,6 +40,7 @@
     "vitest": "2.1.1"
   },
   "dependencies": {
+    "@fastify/jwt": "9.0.0",
     "@prisma/client": "5.19.1",
     "bcryptjs": "2.4.3",
     "dayjs": "1.11.13",
