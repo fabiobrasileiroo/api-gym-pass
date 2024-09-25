@@ -6,12 +6,11 @@ import { profile } from './controllers/profile'
 import { verifyJWT } from './middlewares/verify-jwt'
 
 export async function appRoutes(app: FastifyInstance) {
-
   app.get('/', baseRouter)
 
   app.post('/users', register)
 
   app.post('/sessions', authenticate)
   /** Authentication */
-  app.get('/me',{onRequest: [verifyJWT]},profile)
+  app.get('/me', { onRequest: [verifyJWT] }, profile)
 }

@@ -10,19 +10,16 @@
     "start:dev": "tsx watch src/server.ts",
     "start": "node build/server.js",
     "build": "tsup src --out-dir build",
-    "test": "vitest run",
-    "test:watch": "vitest",
+    "test": "vitest run --dir src/user-cases",
+    "test:watch": "vitest run --dir src/use-cases",
+    "test:e2e": "vitest run --dir src/http",
     "test:coverage": "vitest run --coverage",
     "test:ui": "vitest --ui",
     "lint:format": "npx @biomejs/biome format --write ./",
     "lint": "npx @biomejs/biome lint --write ./",
     "lint:check": "npx @biomejs/biome check --write ./"
   },
-  "keywords": [
-    "api",
-    "GymPass",
-    "solid"
-  ],
+  "keywords": ["api", "GymPass", "solid"],
   "author": "Fábio Brasileiro",
   "license": "MIT",
   "devDependencies": {

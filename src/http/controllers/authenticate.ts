@@ -19,15 +19,16 @@ export async function authenticate(
       email,
       password,
     })
-    console.log("🚀 ~ user:", user)
+    console.log('🚀 ~ user:', user)
 
     const token = await reply.jwtSign(
       {},
       {
         sign: {
-          sub: user.id
-        }
-      })
+          sub: user.id,
+        },
+      }
+    )
     return reply.status(200).send({
       token,
     })
@@ -37,5 +38,4 @@ export async function authenticate(
     }
     throw err
   }
-
 }

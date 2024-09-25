@@ -1,9 +1,9 @@
-import "@fastify/jwt"
+import '@fastify/jwt'
 
-declare module "@fastify/jwt" {
-   export interface FastifyJWT {
+declare module '@fastify/jwt' {
+  export interface FastifyJWT {
     user: {
-      sub: string,
+      sub: string
     } // user type is return type of `request.user` object
   }
 }
