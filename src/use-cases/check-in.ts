@@ -10,7 +10,7 @@ interface CheckInUseCaseRequest {
   userId: string
   gymId: string
   userLatitude: number
-  userLogintude: number
+  userLongitude: number
 }
 interface CheckInUseCaseResponse {
   checkIn: CheckIn
@@ -20,13 +20,13 @@ export class CheckInUseCase {
   constructor(
     private checkInsRepository: CheckInsRepository,
     private gymsRepository: GymsRepository
-  ) {}
+  ) { }
 
   async execute({
     userId,
     gymId,
     userLatitude,
-    userLogintude,
+    userLongitude: userLogintude,
   }: CheckInUseCaseRequest): Promise<CheckInUseCaseResponse> {
     const gym = await this.gymsRepository.findById(gymId)
 

@@ -1,7 +1,7 @@
 import { FastifyInstance } from 'fastify'
 
 import { verifyJWT } from '@/http/middlewares/verify-jwt'
-import { create } from '../gyms/create'
+import { create } from './create'
 import { history } from './history'
 import { valitate} from './validate'
 import { metrics } from './metrics'

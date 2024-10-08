@@ -31,7 +31,7 @@ describe('Search Gyms Use Case', () => {
 
     const { gyms } = await sut.execute({
       userLatitude: -3.0507008,
-      userLogngitude: -60.0211456,
+      userLongitude: -60.0211456,
     })
 
     expect(gyms).toHaveLength(1)

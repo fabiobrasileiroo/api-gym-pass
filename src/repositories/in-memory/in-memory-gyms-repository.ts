@@ -24,10 +24,7 @@ export class InMemoryGymsRepository implements GymsRepository {
           longitude: item.longitude.toNumber(),
         }
       )
-      console.log(
-        '🚀 ~ InMemoryGymsRepository ~ findManyNearby ~ distance:',
-        distance
-      )
+   
       return distance < 10
     })
   }

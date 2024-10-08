@@ -19,7 +19,6 @@ export async function authenticate(
       email,
       password,
     })
-    console.log('🚀 ~ user:', user)
 
     const token = await reply.jwtSign(
       {},

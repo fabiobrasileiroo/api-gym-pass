@@ -36,7 +36,7 @@ describe('Check-in Use Case', () => {
       gymId: 'gym-01',
       userId: 'user-01',
       userLatitude: -3.0507008,
-      userLogintude: -60.0211456,
+      userLongitude: -60.0211456,
     })
 
     expect(checkIn.id).toEqual(expect.any(String))
@@ -46,7 +46,7 @@ describe('Check-in Use Case', () => {
       gymId: 'gym-01',
       userId: 'user-01',
       userLatitude: -3.0507008,
-      userLogintude: -60.0211456,
+      userLongitude: -60.0211456,
     })
 
     // @-3.0507008,-60.0211456,13z
@@ -56,7 +56,7 @@ describe('Check-in Use Case', () => {
         gymId: 'gym-01',
         userId: 'user-01',
         userLatitude: -3.0507008,
-        userLogintude: -60.0211456,
+        userLongitude: -60.0211456,
       })
     ).rejects.toBeInstanceOf(MaxNumberOfCheckInsError)
   })
@@ -68,7 +68,7 @@ describe('Check-in Use Case', () => {
       gymId: 'gym-01',
       userId: 'user-01',
       userLatitude: -3.0507008,
-      userLogintude: -60.0211456,
+      userLongitude: -60.0211456,
     })
 
     vi.setSystemTime(new Date(2024, 0, 22, 8, 0, 0))
@@ -77,7 +77,7 @@ describe('Check-in Use Case', () => {
       gymId: 'gym-01',
       userId: 'user-01',
       userLatitude: -3.0507008,
-      userLogintude: -60.0211456,
+      userLongitude: -60.0211456,
     })
 
     expect(checkIn.id).toEqual(expect.any(String))
@@ -99,7 +99,7 @@ describe('Check-in Use Case', () => {
         gymId: 'gym-02',
         userId: 'user-01',
         userLatitude: -3.0507008,
-        userLogintude: -60.0211456,
+        userLongitude: -60.0211456,
       })
     ).rejects.toBeInstanceOf(MaxDistanceError)
   })
