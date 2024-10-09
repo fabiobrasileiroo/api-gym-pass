@@ -2,7 +2,6 @@ import { makeGetUserMetricsUseCase } from '@/use-cases/factories/make-get-user-m
 import type { FastifyReply, FastifyRequest } from 'fastify'
 
 export async function metrics(request: FastifyRequest, reply: FastifyReply) {
-
   const GetUserMetricsUseCase = makeGetUserMetricsUseCase()
 
   const { checkInsCount } = await GetUserMetricsUseCase.execute({
@@ -10,6 +9,6 @@ export async function metrics(request: FastifyRequest, reply: FastifyReply) {
   })
 
   return reply.status(200).send({
-    checkInsCount
+    checkInsCount,
   })
 }

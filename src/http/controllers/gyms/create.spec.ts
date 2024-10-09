@@ -13,8 +13,7 @@ describe('Profile (e2e)', () => {
   })
 
   it('should be able to create a gym', async () => {
-
-    const { token }= await createAndAuthenticateUser(app)
+    const { token } = await createAndAuthenticateUser(app,true)
 
     const response = await request(app.server)
       .post('/gyms')
@@ -26,7 +25,6 @@ describe('Profile (e2e)', () => {
         latitude: -3.0507008,
         longitude: -60.0211456,
       })
-
 
     expect(response.statusCode).toEqual(201)
   })

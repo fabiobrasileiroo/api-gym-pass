@@ -17,7 +17,7 @@ describe('Check-in History (e2e)', () => {
       data: {
         title: 'JavaScript Gym',
         latitude: -3.0507008,
-        longitude: -60.0211456,   
+        longitude: -60.0211456,
       },
     })
     await prisma.checkIn.createMany({

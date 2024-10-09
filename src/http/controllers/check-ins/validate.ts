@@ -7,14 +7,13 @@ export async function valitate(request: FastifyRequest, reply: FastifyReply) {
     checkInId: z.string().uuid(),
   })
 
-
   const { checkInId } = validateCheckInParamsSchema.parse(request.params)
 
   const validateCheckInUseCase = makeValidateCheckInUseCase()
 
   await validateCheckInUseCase.execute({
-    checkInId
+    checkInId,
   })
 
-  return reply.status(201).send()
+  return reply.status(204).send()
 }

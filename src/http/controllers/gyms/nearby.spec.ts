@@ -13,8 +13,7 @@ describe('Nearby Gyms (e2e)', () => {
   })
 
   it('should be able search gyms by title', async () => {
-
-    const { token }= await createAndAuthenticateUser(app)
+    const { token } = await createAndAuthenticateUser(app,true)
 
     await request(app.server)
       .post('/gyms')
@@ -27,7 +26,7 @@ describe('Nearby Gyms (e2e)', () => {
         longitude: -60.0211456,
       })
 
-      await request(app.server)
+    await request(app.server)
       .post('/gyms')
       .set('Authorization', `Bearer ${token}`)
       .send({
@@ -38,22 +37,20 @@ describe('Nearby Gyms (e2e)', () => {
         longitude: -60.0211456,
       })
 
-      const response = await request(app.server)
-        .get('/gyms/search')
-        .query({
-          q: 'JavaScript',
-        })
-        .set('Authorization',`Bearer ${token}`)
-        .send()
-
-
+    const response = await request(app.server)
+      .get('/gyms/search')
+      .query({
+        q: 'JavaScript',
+      })
+      .set('Authorization', `Bearer ${token}`)
+      .send()
 
     expect(response.statusCode).toEqual(200)
     expect(response.body.gyms).toHaveLength(1)
     expect(response.body.gyms).toEqual([
       expect.objectContaining({
-        title: 'JavaScript Gym'
-      })
+        title: 'JavaScript Gym',
+      }),
     ])
   })
 })
