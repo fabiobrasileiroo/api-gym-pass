@@ -5,7 +5,7 @@ GymPass style app.
 ## RFs (Requisitos funcionais) 
 > obs: é uma declaração de como um sistema deve se comportar
 
-- [] Deve ser possível se cadastrar;
+- [x] Deve ser possível se cadastrar;
 - [x] Deve ser possível se autenticar;
 - [x] Deve ser possível obter o perfil de um usuário logado;
 - [x] Deve ser possível o usuário obter o número de check-ins realizados pelo usuário logado;
